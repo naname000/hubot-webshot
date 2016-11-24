@@ -13,7 +13,7 @@ describe 'webshot', ->
       yield @room.user.say('user1', 'webshot');
 
     it 'webshot', ->
-      @room.user.say('user1', 'webshot').then ->
-
+      @room.user.say('user1', 'webshot').then =>
+        console.log @room.messages
 
 

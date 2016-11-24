@@ -12,7 +12,9 @@
   "bugs": {
     "url": "https://github.com/naname000/hubot-webshot/issues"
   },
-  "dependencies": {},
+  "dependencies": {
+    "imgur": "^0.2.0"
+  },
   "peerDependencies": {
     "hubot": "2.x"
   },
@@ -23,6 +25,7 @@
     "coffee-script": "1.11.1",
     "grunt": "^1.0.1",
     "grunt-cli": "^0.1.13",
+    "grunt-env": "^0.4.4",
     "grunt-contrib-watch": "~1.0.0",
     "grunt-mocha-test": "~0.12.7",
     "grunt-release": "~0.14.0",
