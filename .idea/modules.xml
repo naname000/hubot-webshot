@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/hubot-asynchronous-test.iml" filepath="$PROJECT_DIR$/.idea/hubot-asynchronous-test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/hubot-webshot.iml" filepath="$PROJECT_DIR$/.idea/hubot-webshot.iml" />
     </modules>
   </component>
 </project>
