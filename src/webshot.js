@@ -22,7 +22,7 @@ module.exports = function(robot) {
         };
         webshot('http://live.city.nanto.toyama.jp/livecam/index04.jsp',
           'yahoooo.png', options, function (err) {
-          done();
+          next(done);
         });
       }
     }
