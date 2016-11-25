@@ -1,5 +1,27 @@
 'use strict'
-
+# Description:
+#   webshot hogehoge
+#   と発言することで、hogehogeに応じた内容でスクリーンショットを撮影、imgurに画像をアップロードし
+#   アップロードした画像のURLを発言します。
+#   hogehogeに対応するスクリーンショットの動作、及び発言先のキーワードはhubot-webshot.jsonに記述します。
+#
+# Dependencies:
+#   "webshot" : "*"
+#   "imgur" : "*"
+#
+# Configuration:
+#   IMGUR_USERNAME imgurアカウントのユーザ名
+#   IMGUR_PASSWORD imgurアカウントのパスワード
+#   IMGUR_CLIENT_ID imgurアカウントのクライアントID
+#
+# Commands:
+#   hubot <keyword> - keywordに応じたスクリーンショットを撮影、投稿します
+#   <trigger> - <what the hear trigger does>
+#
+# Notes:
+#
+# Author:
+#   naname000
 module.exports = (robot) ->
   options =
     shotOffset:
@@ -12,7 +34,6 @@ module.exports = (robot) ->
   username = process.env.IMGUR_USERNAME
   password = process.env.IMGUR_PASSWORD
   clientId = process.env.IMGUR_CLIENT_ID
-  secret = process.env.IMGUR_SECRET
 
   robot.hear /webshot/, id: 'webshot', (res) ->
 
