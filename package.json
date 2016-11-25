@@ -13,7 +13,8 @@
     "url": "https://github.com/naname000/hubot-webshot/issues"
   },
   "dependencies": {
-    "imgur": "^0.2.0"
+    "imgur": "^0.2.0",
+    "webshot": "^0.18.0"
   },
   "peerDependencies": {
     "hubot": "2.x"
@@ -34,8 +35,7 @@
     "matchdep": "~0.3.0",
     "mocha": "^2.1.0",
     "sinon": "^1.13.0",
-    "sinon-chai": "^2.7.0",
-    "webshot": "^0.18.0"
+    "sinon-chai": "^2.7.0"
   },
   "main": "index.coffee",
   "scripts": {
