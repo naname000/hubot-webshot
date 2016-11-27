@@ -1,19 +1,24 @@
 'use strict'
 Helper = require('hubot-test-helper')
 helper = new Helper('../src/webshot.coffee')
-Promise = require('bluebird')
-co = require('co')
 expect = require('chai').expect
-describe 'webshot', ->
+#describe 'webshotイベントが発生する', ->
+#  @timeout 1000
+#  beforeEach ->
+#    @room = helper.createRoom(httpd: false)
+#  it 'user1がwebshot イオックスと発言、webshotイベントが発生する', (done) ->
+#    @room.robot.on 'webshot', ->
+#      done()
+#    @room.user.say 'user1', 'webshot イオックス'
+
+describe 'webshot-completeイベントが発生する', ->
+  @timeout 30000
   beforeEach ->
     @room = helper.createRoom(httpd: false)
-  describe 'webshot context', ->
-    @timeout 30000
-    co =>
-      yield @room.user.say('user1', 'webshot');
+  it 'user1がwebshot イオックスと発言、webshot-completeイベントが発生する', (done) ->
+    @room.user.say 'user1', 'webshot イオックス'
+    console.log 'Handle on webshot-complete'
+    @room.robot.on 'webshot-complete', () ->
+      done() #TODO 上記コメントアウト部分のテストを動かすとここが呼ばれない。Why
 
-    it 'webshot', ->
-      @room.user.say('user1', 'webshot').then =>
-        console.log @room.messages
-
-
+#TODO テストコードリファクタリング

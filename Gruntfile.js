@@ -3,13 +3,6 @@
 module.exports = function (grunt) {
   //grunt.loadNpmTasks('grunt-env');
   grunt.initConfig({
-    env: {
-      dev: {
-        IMGUR_USERNAME: '',
-        IMGUR_PASSWORD: '',
-        IMGUR_CLIENT_ID: ''
-      }
-    },
     mochaTest: {
       test: {
         options: {
@@ -34,7 +27,7 @@ module.exports = function (grunt) {
   // load all grunt tasks
   require('matchdep').filterDev(['grunt-*', '!grunt-cli']).forEach(grunt.loadNpmTasks);
 
-  grunt.registerTask('test', ['env:dev', 'mochaTest']);
+  grunt.registerTask('test', ['mochaTest']);
   grunt.registerTask('test:watch', ['watch']);
   grunt.registerTask('default', ['test']);
 };

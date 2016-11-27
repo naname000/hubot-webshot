@@ -1,0 +1,17 @@
+{
+  "イオックス":
+  {
+    "url":"http://live.city.nanto.toyama.jp/livecam/index04.jsp",
+    "options": {
+      "shotOffset": {
+        "left": 10,
+        "top": 180
+      },
+      "shotSize": {
+        "width": 665,
+        "height": 558
+      }
+    },
+    "channel": "random_snowboarding"
+  }
+}
