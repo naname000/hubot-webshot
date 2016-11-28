@@ -14,7 +14,7 @@
 #   IMGUR_CLIENT_ID imgurアカウントのクライアントID
 #
 # Commands:
-#   hubot <keyword> - keywordに応じたスクリーンショットを撮影、投稿します
+#   hubot webshot <keyword> - keywordに応じたスクリーンショットを撮影、投稿します
 #   <trigger> - <what the hear trigger does>
 #
 # Notes:
