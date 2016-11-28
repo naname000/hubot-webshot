@@ -13,5 +13,20 @@
       }
     },
     "channel": "random_snowboarding"
+  },
+  "スターシュプール":
+  {
+    "url":"http://www.ryokufu.co.jp/",
+    "options": {
+      "shotOffset": {
+        "left": 30,
+        "top": 520
+      },
+      "shotSize": {
+        "width": 242,
+        "height": 420
+      }
+    },
+    "channel": "random_snowboarding"
   }
 }
