@@ -6,5 +6,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="hubot-asynchronous-test node_modules" level="project" />
+    <orderEntry type="library" name="hubot-webshot node_modules" level="project" />
   </component>
 </module>
