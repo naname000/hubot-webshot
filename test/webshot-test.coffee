@@ -6,10 +6,11 @@ expect = require('chai').expect
 url = 'http://live.city.nanto.toyama.jp/livecam/index04.jsp'
 keyword = 'イオックス'
 addMessage = "webshot add #{keyword} #{url}"
-left = 30
-top = 520
-height = 420
-width = 242
+left = 10
+top = 180
+height = 558
+width = 665
+
 addMessageWithParams = "#{addMessage} left:#{left} top:#{top} height:#{height} width:#{width}"
 deleteMessage = "webshot delete #{keyword}"
 
