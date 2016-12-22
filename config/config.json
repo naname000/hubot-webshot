@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "naname-dev",
+    "password": "naname-dev",
+    "database": "naname-dev",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "logging": false
+  },
+  "travis": {
+    "host": "127.0.0.1",
+    "username": "postgres",
+    "database": "travis_ci_test",
+    "dialect": "postgres"
+  },
+  "production": {
+    "username": "root",
+    "password": null,
+    "database": "database_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}

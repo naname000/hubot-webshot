@@ -10,3 +10,9 @@ notifications:
   slack:
     rooms:
       secure: njXe00sGHPhFIKIsWK/2VxmwA5+gv+QyxZZ+NNQu2gl3hqFU5H8T2E86dkprnr/ah/3s6dGkRMx9NNm8bBKhg8z/s+FPD6sCFCItsHfD3ZJt+Aj4blefzVPz64Hy4BHxtyJ/pWkP6gjoq8T0y4y0S8DCOT3GeA6ITF1j6ezF9+vbumzSXN6S26Q6LQUeI/eYmANmPvhkk/kYR6HYsg0TLyv1pCibZYNy/A22FGUEz+r0qEjJCfJ9h1OEFf5/0Rx8ZKPheRhj5cMOhxnK1uIGYIh9HVMM3wRFgoXs4p7olkDcS8qjGkbP5sGxpFHC0wb+B0//18ItjHnGXsCTNQw6u0C/dBn87Ux3QpshK46ZnDDFB5tks7v+EREzuj31eblEPG1vUDbwUSrS19bah1L04mT+sv9nDLyFoXo3RFd0exNe+0ZJjWi3qn08UoWUTcqvQeE52WwiDObmpgNwIsb9lwY5yjXOoVsV+sRin0t0EmM55eL7Ij+5EtDaUkV4LWaigXu+L0VA3d6GvWAspTNQI9A19gDXnNveZWtwg4QXxTyGy74lqw0r0LT5M8PRVl7Pj0J9Rmuh3ZUQx8NfJHQoKG+1xzQ9P3oyP8N7VTTsfB+pOccddIrMMlsrCMlbr3BJA2hTmpncp5z5c4zY4WRZvMsyzRd6BlNLmhQTkvbrxew=
+env:
+  - NODE_ENV=travis
+services:
+  - postgresql
+before_script:
+  - psql -c 'create database travis_ci_test;' -U postgres
