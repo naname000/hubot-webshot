@@ -7,9 +7,11 @@
     "dialect": "postgres",
     "logging": false
   },
-  "test": {
-    "dialect": "sqlite",
-    "storage": ":memory:"
+  "travis": {
+    "host": "127.0.0.1",
+    "username": "postgres",
+    "database": "travis_ci_test",
+    "dialect": "postgres"
   },
   "production": {
     "username": "root",
