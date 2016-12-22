@@ -14,7 +14,7 @@ width = 665
 addMessageWithParams = "#{addMessage} left:#{left} top:#{top} height:#{height} width:#{width}"
 deleteMessage = "webshot delete #{keyword}"
 
-describe 'webshot-completeイベントが発生する', ->
+describe.skip 'webshot-completeイベントが発生する', ->
   @timeout 30000
   before ->
     @models = require('../models')
@@ -99,3 +99,26 @@ describe 'webshot add,deleteを発言してレスポンスを検証する', ->
                 ['hubot', "@user1 Webshot delete failed. #{keyword} is not registered."]
               ]
             )
+
+describe 'webshot http://...を発言してwebshotイベントが発生することを検証する', ->
+  before (done) ->
+    @models = require('../models')
+    @room = helper.createRoom(httpd: false)
+    @models.sequelize.sync(force: true)
+    .then ->
+      done()
+    return undefined
+
+  it 'user1 says webshot http://www.yahoo.co.jp and options...', ->
+    eventCount = 0
+    @room.robot.on 'webshot', () ->
+      eventCount++
+    @room.user.say('user1', 'webshot http://www.yahoo.co.jp').then =>
+      @room.user.say('user1', 'webshot http://www.yahoo.co.jp left:10 top:10 width:10 height:10').then =>
+        expect(eventCount).to.equal(2)
+        expect(@room.messages).to.eql(
+          [
+            ['user1', 'webshot http://www.yahoo.co.jp']
+            ['user1', 'webshot http://www.yahoo.co.jp left:10 top:10 width:10 height:10']
+          ]
+        )

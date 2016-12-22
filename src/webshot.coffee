@@ -53,7 +53,7 @@ module.exports = (robot) ->
         robot.messageRoom channel, json.data.link
         robot.emit 'webshot-complete'
 
-  robot.hear /webshot\s(?!(?:add|list|delete))(.+)/,
+  robot.hear /webshot\s(?!(?:https?|add|list|delete))(.+)/,
     id: 'webshot', (res) ->
 
   robot.hear /webshot\s+add/, (res) ->
