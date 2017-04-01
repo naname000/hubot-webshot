@@ -1,8 +1,8 @@
 # Description:
-#   webshot hogehoge
-#   と発言することで、hogehogeに応じた内容でスクリーンショットを撮影、imgurに画像をアップロードし
+#   webshot <keyword>
+#   と発言することで、keywordに応じた内容でスクリーンショットを撮影、imgurに画像をアップロードし
 #   アップロードした画像のURLを発言します。
-#   hogehogeに対応するスクリーンショットの動作、及び発言先のキーワードはhubotディレクトリ直下、hubot-webshot.jsonに記述します。
+#   詳しくはhubot help webshotを御覧ください。
 #
 # Dependencies:
 #   "webshot" : "*"
@@ -19,7 +19,6 @@
 #   hubot webshot add <keyword> <url> <options> - 撮影オプション付きで登録します。利用可能なオプションはtop left width heightです。オプション名と値をコロン区切りで指定します。ex. (top:10)
 #   hubot webshot <url> [<options>] - 一度だけ撮影を行います。オプションの調整など
 #   hubot webshot delete <keyword> - 登録されているキーワードを削除します。
-#   <trigger> - <what the hear trigger does>
 #
 # Notes:
 #
