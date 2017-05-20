@@ -122,3 +122,25 @@ describe 'webshot http://...を発言してwebshotイベントが発生するこ
             ['user1', 'webshot http://www.yahoo.co.jp left:10 top:10 width:10 height:10']
           ]
         )
+
+describe.only 'webshot ggl ...を発言してwebshotイベントが発生することを検証する', ->
+  @timeout 20000
+  before (done) ->
+    @models = require('../models')
+    @room = helper.createRoom(httpd: false)
+    @models.sequelize.sync(force: true)
+    .then ->
+      done()
+    return undefined
+
+  it 'user1 says webshot ggl ...', (done) ->
+    @room.robot.on 'webshot-complete', () ->
+      done()
+    @room.user.say('user1', 'webshot ggl hogehoge').then =>
+      expect(@room.messages).to.eql(
+        [
+          ['user1', 'webshot ggl hogehoge']
+        ]
+      )
+    # MochaはPromiseをreturnするとdoneメソッドが使えない。CoffeeScriptは最終行が勝手にreturn.
+    return undefined

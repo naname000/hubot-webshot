@@ -19,6 +19,7 @@
 #   hubot webshot add <keyword> <url> <options> - 撮影オプション付きで登録します。利用可能なオプションはtop left width heightです。オプション名と値をコロン区切りで指定します。ex. (top:10)
 #   hubot webshot <url> [<options>] - 一度だけ撮影を行います。オプションの調整など
 #   hubot webshot delete <keyword> - 登録されているキーワードを削除します。
+#   hubot webshot ggl <keyword> - Googleの画像検索を指定したキーワードで行います
 #
 # Notes:
 #
@@ -52,7 +53,7 @@ module.exports = (robot) ->
         robot.messageRoom channel, json.data.link
         robot.emit 'webshot-complete'
 
-  robot.hear /webshot\s(?!(?:https?|add|list|delete))(.+)/,
+  robot.hear /webshot\s(?!(?:https?|add|list|delete|ggl))(.+)/,
     id: 'webshot', (res) ->
 
   robot.hear /webshot\s+add/, (res) ->
@@ -64,6 +65,15 @@ module.exports = (robot) ->
 
   robot.hear /webshot\s+(https?\S+)(?:\s((?:left|top|width|height):\d+))*/,
     id: 'webshot.once', (res) ->
+
+  robot.hear /webshot\sggl\s(.+)/, (res) ->
+    console.log res.match[1]
+    robot.emit(
+      'webshot',
+      "https://www.google.co.jp/search?q=#{res.match[1]}&tbm=isch",
+      {},
+      res.envelope.room
+    )
 
   robot.hear /webshot\s+delete\s([^ ]+)/,
     id: 'webshot.delete', (res) ->
