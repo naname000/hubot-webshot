@@ -1,7 +1,7 @@
 {
   "name": "hubot-webshot",
   "description": "webshot on hubot",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "naname <naname@naname.net>",
   "license": "MIT",
   "keywords": "hubot, hubot-scripts",
