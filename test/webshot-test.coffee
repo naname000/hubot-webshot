@@ -29,7 +29,7 @@ describe.skip 'webshot-completeイベントが発生する', ->
       @room.user.say('user1', "webshot #{keyword}")
     console.log 'Handle on webshot-complete'
 
-describe 'webshot add,deleteを発言するとデータベースに登録,削除される事を検証する', ->
+describe.skip 'webshot add,deleteを発言するとデータベースに登録,削除される事を検証する', ->
   @timeout 2000
   before ->
     @models = require('../models')
@@ -74,7 +74,7 @@ describe 'webshot add,deleteを発言するとデータベースに登録,削除
         expect(count).to.equal(0)
 
 
-describe 'webshot add,deleteを発言してレスポンスを検証する', ->
+describe.skip 'webshot add,deleteを発言してレスポンスを検証する', ->
   before ->
     @models = require('../models')
     @room = helper.createRoom(httpd: false)
@@ -100,7 +100,7 @@ describe 'webshot add,deleteを発言してレスポンスを検証する', ->
               ]
             )
 
-describe 'webshot http://...を発言してwebshotイベントが発生することを検証する', ->
+describe.skip 'webshot http://...を発言してwebshotイベントが発生することを検証する', ->
   before (done) ->
     @models = require('../models')
     @room = helper.createRoom(httpd: false)
@@ -136,10 +136,10 @@ describe.only 'webshot ggl ...を発言してwebshotイベントが発生する�
   it 'user1 says webshot ggl ...', (done) ->
     @room.robot.on 'webshot-complete', () ->
       done()
-    @room.user.say('user1', 'webshot ggl hogehoge').then =>
+    @room.user.say('user1', 'webshot ggl スパウト').then =>
       expect(@room.messages).to.eql(
         [
-          ['user1', 'webshot ggl hogehoge']
+          ['user1', 'webshot ggl スパウト']
         ]
       )
     # MochaはPromiseをreturnするとdoneメソッドが使えない。CoffeeScriptは最終行が勝手にreturn.

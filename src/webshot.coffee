@@ -70,7 +70,7 @@ module.exports = (robot) ->
     console.log res.match[1]
     robot.emit(
       'webshot',
-      "https://www.google.co.jp/search?q=#{res.match[1]}&tbm=isch",
+      "https://www.google.co.jp/search?q=#{encodeURIComponent(res.match[1])}&tbm=isch",
       {},
       res.envelope.room
     )
