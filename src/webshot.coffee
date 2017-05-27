@@ -20,6 +20,7 @@
 #   hubot webshot <url> [<options>] - 一度だけ撮影を行います。オプションの調整など
 #   hubot webshot delete <keyword> - 登録されているキーワードを削除します。
 #   hubot webshot ggl <keyword> - Googleの画像検索を指定したキーワードで行います
+#   hubot wg <keyword> - webshot gglのエイリアスです。
 #
 # Notes:
 #
