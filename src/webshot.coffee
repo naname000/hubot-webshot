@@ -42,11 +42,15 @@ module.exports = (robot) ->
     imgur.setCredentials username, password, clientId
     stream = webshot url, options
     buffers = []
+    console.log "capturing...#{url}"
+    robot.messageRoom channel, 'し、仕方ないわね〜っ(キャプチャ中)'
     stream.on 'data', (buffer) ->
       buffers.push buffer
     stream.on 'error', (err) ->
       #FixMe ErrorHandling
     stream.on 'end', () ->
+      console.log "capturing finished. uploading..."
+      robot.messageRoom channel, 'べ、別にいいけど‼︎(アップロード中)'
       data = Buffer.concat(buffers)
       imgur.uploadBase64(data.toString('base64')).then (json) ->
         console.log json.data.link
@@ -66,12 +70,22 @@ module.exports = (robot) ->
   robot.hear /webshot\s+(https?\S+)(?:\s((?:left|top|width|height):\d+))*/,
     id: 'webshot.once', (res) ->
 
-  robot.hear /webshot\sggl\s(.+)/, (res) ->
-    console.log res.match[1]
+  robot.hear /webshot\sggl\s(.+)|wg\s(.+)/, (res) ->
+    matchedString = res.match[1] ? res.match[2]
+    console.log matchedString
     robot.emit(
       'webshot',
-      "https://www.google.co.jp/search?q=#{encodeURIComponent(res.match[1])}&tbm=isch",
-      {},
+      "https://www.google.co.jp/search?q=#{encodeURIComponent(matchedString)}&tbm=isch",
+      {
+        windowSize: {
+          width: 1280
+          height: 800
+        },
+        shotOffset: {
+          top: 123
+        },
+        userAgent: 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36'
+      },
       res.envelope.room
     )
 

@@ -124,7 +124,7 @@ describe.skip 'webshot http://...を発言してwebshotイベントが発生す�
         )
 
 describe.only 'webshot ggl ...を発言してwebshotイベントが発生することを検証する', ->
-  @timeout 20000
+  @timeout 60000
   before (done) ->
     @models = require('../models')
     @room = helper.createRoom(httpd: false)
@@ -134,13 +134,11 @@ describe.only 'webshot ggl ...を発言してwebshotイベントが発生する�
     return undefined
 
   it 'user1 says webshot ggl ...', (done) ->
-    @room.robot.on 'webshot-complete', () ->
+    @room.robot.on 'webshot-complete', () =>
       done()
-    @room.user.say('user1', 'webshot ggl スパウト').then =>
-      expect(@room.messages).to.eql(
-        [
-          ['user1', 'webshot ggl スパウト']
-        ]
-      )
-    # MochaはPromiseをreturnするとdoneメソッドが使えない。CoffeeScriptは最終行が勝手にreturn.
+
+    #@room.user.say('user1', 'webshot ggl スパウト')
+    @room.user.say('user1', 'wg スパウト')
     return undefined
+    # MochaはPromiseをreturnするとdoneメソッドが使えない。CoffeeScriptは最終行が勝手にreturn.
+
