@@ -53,6 +53,8 @@ module.exports = (robot) ->
       console.log "capturing finished. uploading..."
       robot.messageRoom channel, 'べ、別にいいけど‼︎(アップロード中)'
       data = Buffer.concat(buffers)
+      console.log data
+      console.log typeof data.toString('base64') != 'string', !data.toString('base64'), !data.toString('base64').length
       imgur.uploadBase64(data.toString('base64'))
         .then (json) ->
           console.log json.data.link
