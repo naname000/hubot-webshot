@@ -53,10 +53,14 @@ module.exports = (robot) ->
       console.log "capturing finished. uploading..."
       robot.messageRoom channel, 'べ、別にいいけど‼︎(アップロード中)'
       data = Buffer.concat(buffers)
-      imgur.uploadBase64(data.toString('base64')).then (json) ->
-        console.log json.data.link
-        robot.messageRoom channel, json.data.link
-        robot.emit 'webshot-complete'
+      imgur.uploadBase64(data.toString('base64'))
+        .then (json) ->
+          console.log json.data.link
+          robot.messageRoom channel, json.data.link
+          robot.emit 'webshot-complete'
+        .catch (err) ->
+          console.log err
+
 
   robot.hear /webshot\s(?!(?:https?|add|list|delete|ggl))(.+)/,
     id: 'webshot', (res) ->
