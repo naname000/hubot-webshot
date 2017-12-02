@@ -41,7 +41,8 @@ module.exports = (robot) ->
     webshot = require('webshot')
     imgur = require('imgur')
     imgur.setCredentials username, password, clientId
-    stream = webshot url, options
+    stream = webshot url, options, (err) ->
+      console.log err
     buffers = []
     console.log "capturing...#{url}"
     robot.messageRoom channel, 'し、仕方ないわね〜っ(キャプチャ中)'
