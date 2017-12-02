@@ -38,14 +38,14 @@ module.exports = (robot) ->
   models.sequelize.sync()
 
   robot.on 'webshot', (url, options, channel) ->
+    console.log "capturing...#{url}"
+    robot.messageRoom channel, 'し、仕方ないわね〜っ(キャプチャ中)'
     webshot = require('webshot')
     imgur = require('imgur')
     imgur.setCredentials username, password, clientId
+    buffers = []
     stream = webshot url, options, (err) ->
       console.log err
-    buffers = []
-    console.log "capturing...#{url}"
-    robot.messageRoom channel, 'し、仕方ないわね〜っ(キャプチャ中)'
     stream.on 'data', (buffer) ->
       buffers.push buffer
     stream.on 'error', (err) ->
