@@ -44,9 +44,7 @@ module.exports = (robot) ->
     imgur = require('imgur')
     imgur.setCredentials username, password, clientId
     buffers = []
-    stream = webshot url, options, (err) ->
-      console.log err
-      return
+    stream = webshot url, options
     stream.on 'data', (buffer) ->
       buffers.push buffer
     stream.on 'error', (err) ->
