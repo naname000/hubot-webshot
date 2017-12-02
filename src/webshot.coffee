@@ -59,6 +59,7 @@ module.exports = (robot) ->
         robot.messageRoom channel, 'ナニヨソレイミワカンナイ！(キャプチャデータエラー)'
         return
 
+      robot.messageRoom channel, 'べ、別にいいけど‼︎(アップロード中)'
       imgur.uploadBase64(data.toString('base64'))
         .then (json) ->
           console.log json.data.link
