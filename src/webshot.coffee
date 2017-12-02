@@ -52,10 +52,13 @@ module.exports = (robot) ->
       console.log err
     stream.on 'end', () ->
       console.log "capturing finished. uploading..."
-      robot.messageRoom channel, 'べ、別にいいけど‼︎(アップロード中)'
       data = Buffer.concat(buffers)
-      console.log data
-      console.log typeof data.toString('base64') != 'string', !data.toString('base64'), !data.toString('base64').length
+
+      # webshotが空のstreamを返す事がある(キャッチ出来ない)のでエラートラップを仕込む....Copy from imgur.js:511
+      if typeof data.toString('base64') != 'string' or !data.toString('base64') or !data.toString('base64').length
+        robot.messageRoom channel, 'ナニヨソレイミワカンナイ！(キャプチャデータエラー)'
+        return
+
       imgur.uploadBase64(data.toString('base64'))
         .then (json) ->
           console.log json.data.link
@@ -63,7 +66,7 @@ module.exports = (robot) ->
           robot.emit 'webshot-complete'
         .catch (err) ->
           console.log err
-          robot.messageRoom channel, 'はあ！？ なんで私が！(エラー)'
+          robot.messageRoom channel, 'ナニヨソレイミワカンナイ！(アップロードエラー)'
 
 
   robot.hear /webshot\s(?!(?:https?|add|list|delete|ggl))(.+)/,
@@ -84,7 +87,7 @@ module.exports = (robot) ->
     console.log matchedString
     robot.emit(
       'webshot',
-      "https://www.google.co.jp/search?q=#{encodeURIComponent(matchedString)}&tbm=isch",
+      "https://search.yahoo.co.jp/image/search?p=#{encodeURIComponent(matchedString)}",
       {
         windowSize: {
           width: 1280
