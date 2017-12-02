@@ -63,6 +63,7 @@ module.exports = (robot) ->
           robot.emit 'webshot-complete'
         .catch (err) ->
           console.log err
+          robot.messageRoom channel, 'はあ！？ なんで私が！(エラー)'
 
 
   robot.hear /webshot\s(?!(?:https?|add|list|delete|ggl))(.+)/,
