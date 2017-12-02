@@ -46,10 +46,12 @@ module.exports = (robot) ->
     buffers = []
     stream = webshot url, options, (err) ->
       console.log err
+      return
     stream.on 'data', (buffer) ->
       buffers.push buffer
     stream.on 'error', (err) ->
       #FixMe ErrorHandling
+      console.log err
     stream.on 'end', () ->
       console.log "capturing finished. uploading..."
       robot.messageRoom channel, 'べ、別にいいけど‼︎(アップロード中)'
